@@ -31,7 +31,7 @@ function test(){
             console.log (producte.mostrarConsola());
             producte.mostrarTabla(tabla);
             producte.eliminarFila();
-            producte.alert();
+            //producte.alert();
         }
 
     };
@@ -74,7 +74,7 @@ function test(){
 
         alert(){
             contenedor.addEventListener("click", function(e){
-                            if(e.target.id == "save" && inputName.length != "" && inputPrice.length != "" && inputYear.length != "" ){
+                            if(e.target.id == "save" && this.name != "" && this.price != "" && this.year != "" ){
                                 alertas('alert-success', message.add);
                             }
                             if(e.target.id == "delete"){
