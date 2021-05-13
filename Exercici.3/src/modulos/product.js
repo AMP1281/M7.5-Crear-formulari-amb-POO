@@ -1,42 +1,4 @@
-const message = {
-    error: "Complete fields please",
-    add: "Product Added Succesfully",
-    remove: "Product Deleted Succesfully",
-}
-
-function alertas(color,texto){
-    $("#alerta").removeClass('d-none');
-    $("#alerta").addClass(color);
-    setTimeout(function(){
-    $("#alerta").addClass('d-none');
-    $("#alerta").removeClass(color);
-    },2000);
-    $("#alerta").text(texto);
-}
-
-function guardar(){
-
-    const registreForm = formulari;
-    const inputName = registreForm.elements.Name.value;
-    const inputPrice = registreForm.elements.Price.value;
-    const inputYear = registreForm.elements.Year.value;
-
-    const producte = new Product (inputName, inputPrice, inputYear);
-
-    if (inputName.length == "" && inputPrice.length == "" && inputYear.length == ""){
-        producte.alert();
-    }
-
-    else{
-        console.log (producte.mostrarConsola());
-        producte.mostrarTabla(tabla);
-        producte.eliminarFila();
-        producte.alert();
-    }
-
-};
-
-class Product{
+export class Product{
     constructor(name, price, year){
         this.name = name,
         this.price = price,
@@ -76,24 +38,3 @@ class Product{
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
