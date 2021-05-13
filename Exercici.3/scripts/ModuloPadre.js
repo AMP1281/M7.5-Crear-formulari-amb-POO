@@ -16,10 +16,10 @@ function alertas(color,texto){
 
 function test(){
 
-    var registreForm = formulari;
-    var inputName = registreForm.elements.Name.value;
-    var inputPrice = registreForm.elements.Price.value;
-    var inputYear = registreForm.elements.Year.value;
+    const registreForm = formulari;
+    const inputName = registreForm.elements.Name.value;
+    const inputPrice = registreForm.elements.Price.value;
+    const inputYear = registreForm.elements.Year.value;
 
     const producte = new Product (inputName, inputPrice, inputYear);
 
