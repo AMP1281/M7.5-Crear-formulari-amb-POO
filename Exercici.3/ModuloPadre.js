@@ -14,7 +14,7 @@ function test(){
         const producte = new Product (inputName, inputPrice, inputYear);
 
         if (inputName.length == "" && inputPrice.length == "" && inputYear.length == ""){
-        producte.empty();
+        producte.alert();
         }
 
         else{
@@ -41,12 +41,6 @@ function test(){
             this.name = name,
             this.price = price,
             this.year = year
-        }
-
-        empty () {
-            if (this.name == "" || this.price == "" || this.year == "" ){
-                alertas('alert-danger', message.error);
-            }
         }
 
         mostrarConsola(){
@@ -76,6 +70,9 @@ function test(){
             contenedor.addEventListener("click", function(e){
                             if(e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != ""){
                                 alertas('alert-success', message.add);
+                            }
+                            if(e.target.id == "save" && Name.value == "" && Price.value == "" && Year.value == ""){
+                                alertas('alert-danger', message.error);
                             }
                             if(e.target.id == "delete"){
                                 alertas('alert-danger', message.remove);
