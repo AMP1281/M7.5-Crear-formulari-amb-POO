@@ -4,6 +4,16 @@ const message = {
     remove: "Product Deleted Succesfully",
 }
 
+function alertas(color,texto){
+    $("#alerta").removeClass('d-none');
+    $("#alerta").addClass(color);
+    setTimeout(function(){
+    $("#alerta").addClass('d-none');
+    $("#alerta").removeClass(color);
+    },2000);
+    $("#alerta").text(texto);
+}
+
 function test(){
 
         var registreForm = formulari;
@@ -25,16 +35,6 @@ function test(){
         }
 
     };
-
-    function alertas(color,texto){
-        $("#alerta").removeClass('d-none');
-        $("#alerta").addClass(color);
-        setTimeout(function(){
-        $("#alerta").addClass('d-none');
-        $("#alerta").removeClass(color);
-        },2000);
-        $("#alerta").text(texto);
-    }
 
     class Product{
         constructor(name, price, year){
