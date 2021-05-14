@@ -1,18 +1,3 @@
-const message = {
-    error: "Complete fields please",
-    add: "Product Added Succesfully",
-    remove: "Product Deleted Succesfully",
-}
-
-function alertas(color,texto){
-    $("#alerta").removeClass('d-none');
-    $("#alerta").addClass(color);
-    setTimeout(function(){
-    $("#alerta").addClass('d-none');
-    $("#alerta").removeClass(color);
-    },2000);
-    $("#alerta").text(texto);
-}
 
 function test(){
 
@@ -67,6 +52,20 @@ class Product{
     }
 
     alert(){
+        function alertas(color,texto){
+            $("#alerta").removeClass('d-none');
+            $("#alerta").addClass(color);
+            setTimeout(function(){
+            $("#alerta").addClass('d-none');
+            $("#alerta").removeClass(color);
+            },2000);
+            $("#alerta").text(texto);
+        }
+        const message = {
+            error: "Complete fields please",
+            add: "Product Added Succesfully",
+            remove: "Product Deleted Succesfully",
+        }
         contenedor.addEventListener("click", function(e){
             (e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != "")? alertas('alert-success', message.add):alertas('alert-danger', message.error);
             if(e.target.id == "delete"){
