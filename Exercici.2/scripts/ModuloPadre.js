@@ -6,9 +6,17 @@ function test(){
     var inputPrice = registreForm.elements.Price.value;
     var inputYear = registreForm.elements.Year.value;
 
+    var productos =  new Array(); 
+
     const producte = new Product (inputName, inputPrice, inputYear);
 
+    producte.arrayProduct()
+
     if (inputName.length == "" && inputPrice.length == "" && inputYear.length == ""){
+        producte.alert();
+    }
+
+    else if (productos.includes(inputName)){
         producte.alert();
     }
 
@@ -28,6 +36,13 @@ class Product{
         this.year = year
     }
 
+    arrayProduct(){
+        var cells = document.querySelectorAll('td:nth-child(2)');
+        cells.forEach(function(cell) {
+          productos.push(cell.innerHTML);
+        })
+    }
+
     mostrarConsola(){
         return `
             Name: ${this.name}
@@ -37,7 +52,7 @@ class Product{
     }
 
     mostrarTabla(tabla){
-        tabla.innerHTML += `<tr> <td> <b> Product Name:  </b> </td> <td>${this.name} </td>
+        tabla.innerHTML += `<tr> <td> <b> Product Name:  </b> </td> <td  id="tName">${this.name} </td>
                                     <td> <b> Product Price: </b> </td> <td>${this.price}</td>
                                     <td> <b> Product Year:  </b> </td> <td>${this.year} </td>
                                     <td> <button id="delete" type="button" class="btn btn-danger btn-sm rounded-pill"> Delete </button> </td> </tr> `;
@@ -67,7 +82,12 @@ class Product{
             remove: "Product Deleted Succesfully",
         }
         contenedor.addEventListener("click", function(e){
-            (e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != "")? alertas('alert-success', message.add):alertas('alert-danger', message.error);
+            if(e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != ""){
+                alertas('alert-success', message.add);
+            }
+            if(e.target.id == "save" && Name.value == "" && Price.value == "" && Year.value == ""){
+                alertas('alert-danger', message.error);
+            }
             if(e.target.id == "delete"){
                 alertas('alert-danger', message.remove);
             }
