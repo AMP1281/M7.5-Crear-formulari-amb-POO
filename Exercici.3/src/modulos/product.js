@@ -13,7 +13,6 @@ export class Product{
         cells.forEach(function(cell) {
           productos.push(cell.innerHTML);
         })
-        console.log(productos.includes(Name.value));
     }
 
     mostrarConsola(){
