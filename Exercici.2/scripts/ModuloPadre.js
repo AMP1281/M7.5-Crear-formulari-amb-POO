@@ -15,7 +15,7 @@ function test(){
         producte.alert();
     }
 
-    if(productos.includes(Name.value)){
+    else if(productos.includes(Name.value)){
         producte.alert();
     }
 
