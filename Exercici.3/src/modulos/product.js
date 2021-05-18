@@ -1,8 +1,18 @@
+export const productos =  new Array();
 export class Product{
     constructor(name, price, year){
         this.name = name,
         this.price = price,
         this.year = year
+    }
+
+    repetido(){
+        productos.length = 0;
+        const cells = document.querySelectorAll('td:nth-child(2)');
+        cells.forEach(function(cell) {
+          productos.push(cell.innerHTML);
+        })
+        console.log(productos.includes(Name.value));
     }
 
     mostrarConsola(){
@@ -40,15 +50,19 @@ export class Product{
         }
         const message = {
             error: "Complete fields please",
+            exists: "Product already exists",
             add: "Product Added Succesfully",
             remove: "Product Deleted Succesfully",
         }
         contenedor.addEventListener("click", function(e){
-            if(e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != ""){
-                alertas('alert-success', message.add);
-            }
             if(e.target.id == "save" && Name.value == "" && Price.value == "" && Year.value == ""){
                 alertas('alert-danger', message.error);
+            }
+            if(e.target.id == "save" && productos.includes(Name.value)){
+                alertas('alert-danger', message.exists);
+            }
+            if(e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != "" && !productos.includes(Name.value)){
+                alertas('alert-success', message.add);
             }
             if(e.target.id == "delete"){
                 alertas('alert-danger', message.remove);

@@ -9,7 +9,7 @@ function test(){
 
     const producte = new Product (inputName, inputPrice, inputYear);
 
-    producte.arrayProduct()
+    producte.repetido()
 
     if (inputName.length == "" && inputPrice.length == "" && inputYear.length == ""){
         producte.alert();
@@ -35,7 +35,7 @@ class Product{
         this.year = year
     }
 
-    arrayProduct(){
+    repetido(){
         productos.length=0;
         const cells = document.querySelectorAll('td:nth-child(2)');
         cells.forEach(function(cell) {
