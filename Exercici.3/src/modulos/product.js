@@ -1,4 +1,5 @@
 export const productos =  new Array();
+
 export class Product{
     constructor(name, price, year){
         this.name = name,
