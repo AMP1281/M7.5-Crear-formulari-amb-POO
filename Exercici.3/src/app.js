@@ -1,6 +1,6 @@
-import {Product} from "./modulos/product";
-
 import {productos} from "./modulos/product";
+
+import {Product} from "./modulos/product";
 
 save.addEventListener("click", function(e){
 

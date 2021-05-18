@@ -24,9 +24,9 @@ export class Product{
     }
 
     mostrarTabla(tabla){
-        tabla.innerHTML += `<tr> <td> <b> Product Name:  </b> </td> <td>${this.name} </td>
+        tabla.innerHTML += `<tr> <td> <b> Product Name: </b> </td> <td>${this.name}</td>
                                     <td> <b> Product Price: </b> </td> <td>${this.price}</td>
-                                    <td> <b> Product Year:  </b> </td> <td>${this.year} </td>
+                                    <td> <b> Product Year: </b> </td> <td>${this.year}</td>
                                     <td> <button id="delete" type="button" class="btn btn-danger btn-sm rounded-pill"> Delete </button> </td> </tr> `;
     }
 
