@@ -1,12 +1,11 @@
+const productos =  new Array();
 
 function test(){
 
-    var registreForm = formulari;
-    var inputName = registreForm.elements.Name.value;
-    var inputPrice = registreForm.elements.Price.value;
-    var inputYear = registreForm.elements.Year.value;
-
-    var productos =  new Array(); 
+    const registreForm = formulari;
+    const inputName = registreForm.elements.Name.value;
+    const inputPrice = registreForm.elements.Price.value;
+    const inputYear = registreForm.elements.Year.value;
 
     const producte = new Product (inputName, inputPrice, inputYear);
 
@@ -16,7 +15,7 @@ function test(){
         producte.alert();
     }
 
-    else if (productos.includes(Name.value)){
+    if(productos.includes(Name.value)){
         producte.alert();
     }
 
@@ -37,10 +36,12 @@ class Product{
     }
 
     arrayProduct(){
-        var cells = document.querySelectorAll('td:nth-child(2)');
+        productos.length=0;
+        const cells = document.querySelectorAll('td:nth-child(2)');
         cells.forEach(function(cell) {
           productos.push(cell.innerHTML);
         })
+        console.log(productos.includes(Name.value));
     }
 
     mostrarConsola(){
@@ -52,9 +53,9 @@ class Product{
     }
 
     mostrarTabla(tabla){
-        tabla.innerHTML += `<tr> <td> <b> Product Name:  </b> </td> <td  id="tName">${this.name} </td>
+        tabla.innerHTML += `<tr> <td> <b> Product Name: </b> </td> <td id="tName">${this.name}</td>
                                     <td> <b> Product Price: </b> </td> <td>${this.price}</td>
-                                    <td> <b> Product Year:  </b> </td> <td>${this.year} </td>
+                                    <td> <b> Product Year: </b> </td> <td>${this.year}</td>
                                     <td> <button id="delete" type="button" class="btn btn-danger btn-sm rounded-pill"> Delete </button> </td> </tr> `;
     }
 
@@ -78,15 +79,19 @@ class Product{
         }
         const message = {
             error: "Complete fields please",
+            exists: "Product already exists",
             add: "Product Added Succesfully",
             remove: "Product Deleted Succesfully",
         }
         contenedor.addEventListener("click", function(e){
-            if(e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != ""){
-                alertas('alert-success', message.add);
-            }
             if(e.target.id == "save" && Name.value == "" && Price.value == "" && Year.value == ""){
                 alertas('alert-danger', message.error);
+            }
+            if(e.target.id == "save" && productos.includes(Name.value)){
+                alertas('alert-danger', message.exists);
+            }
+            if(e.target.id == "save" && Name.value != "" && Price.value != "" && Year.value != "" && !productos.includes(Name.value)){
+                alertas('alert-success', message.add);
             }
             if(e.target.id == "delete"){
                 alertas('alert-danger', message.remove);
